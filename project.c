@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 //Assignment 1 eng1003//
 
 //The int main will simply be able to call each function I make//
@@ -8,12 +9,11 @@
 
 //read in with stdin give option for each function with printf//
 //The rotation encryption function//
-char rotationEncryption();
+void rotationEncryption();
 
 int main() {
-    int menuChoice=0,rotationAmount=0;
-    char encryption=0;
-    char text[1000];
+    int menuChoice=0,rotationAmount=0, x=0;
+    char text[1000]={0};
     printf("Please choose a cipher function\n");
     printf("Press 1 for rotation encryption\n");
     printf("Press 2 for rotation decryption\n");
@@ -25,41 +25,29 @@ int main() {
     scanf("%d", &menuChoice);
     
     if (menuChoice ==1){
-        //requests the text to be encrpted and uses the rotationEncryption function//
-        printf("Please input the text to be encrypted in Uppercase\n");
-        scanf("%s", text);
-        printf("Please input Rotation Amount\n");
-        scanf("%d", &rotationAmount);
-        
-        
-        encryption=rotationEncryption(text,rotationAmount);
+        rotationEncryption(text[x],rotationAmount);
+
     }
         //run = function
 
     return 0;
 }
-char rotationEncryption(){
-    char text[1000],character=0;
-    int x=0, rotationAmount=0;
+void rotationEncryption(){
+    char text[1000]={0}, cipher[1000]={0};
+    int rotationAmount, c;
+    printf("Please input Rotation Amount\n");
+    scanf("%d", &rotationAmount);
     //runs a loop from text start to the last character,stopping when it hits the end of the string//
     //this is why the loop starts at x=0 and uses ++x instead of x++//
-    for (x=0 ; text[x]<'\0'; x++){
-        //so that the text can be encrypted without things getting weird, baiscally copying it from one//
-        //string to another and then saying the second string is equal to the first//
+    printf("Please input Text to be encrypted in Uppercase\n");
+    while ((c=getchar()) !='\n'){
+        static int x=0,i=0;
         
-        if (text < 'A' && text > 'Z')
-            if (text >='a' && text <= 'z')
-                character = (text[x]-32 + rotationAmount);
-            else 
-                character=text[x];
-        else
-            character = (text[x] + rotationAmount);
-        printf("%c", character);
-      
-
-            
-                
-            
-    }
+        text[x++]=(char)c;
+        cipher[i++]=(char)(c+rotationAmount);
+        
+    }    
+    printf("%s\n", cipher);
+    printf("%s\n", text);
     
 }
