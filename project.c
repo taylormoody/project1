@@ -12,7 +12,7 @@ char rotationEncryption();
 
 int main() {
     int menuChoice,rotationAmount;
-    char encryption[1000];
+    char encryption;
     char text[1000];
     printf("Please choose a cipher function\n");
     printf("Press 1 for rotation encryption\n");
@@ -32,30 +32,28 @@ int main() {
         scanf("%d", &rotationAmount);
         
         encryption=rotationEncryption(text,rotationAmount);
-        printf("%s", encryption);
+        printf("%s", &encryption);
     }
         //run = function
 
     return 0;
 }
 char rotationEncryption(){
-    char text[1000],character[1000];
+    char text[1000],character;
     int x=0, rotationAmount;
     //runs a loop from text start to the last character,stopping when it hits the end of the string//
     //this is why the loop starts at x=0 and uses ++x instead of x++//
     for (x=0 ; text[x] != '\0'; ++x){
         //so that the text can be encrypted without things getting weird, baiscally copying it from one//
         //string to another and then saying the second string is equal to the first//
-        character=(text[x]+rotationAmount);
-        
-        if(character>= 'A' && character<='Z'){
-            character = character-26
-            
-            if (character >'Z' && character <'A'){
-                printf("Please only input uppercase letters\n");
+        character= (text[x]+rotationAmount);
+        text[x]=character;
+    
+      
+
             
                 
-            }
+            
     }
     
 }
