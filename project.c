@@ -45,9 +45,26 @@ void rotationEncryption(){
     while ((c=getchar()) !='\n'){
         static int x=0,i=0;
         
-        text[x++]=(char)c;
-        cipher[i++]=(char)(c+3);
-
+        if (c+rotationAmount>='A' && c+rotationAmount<='Z'){
+            text[i++]=(char)c;
+            cipher[x++]=(char)(c+rotationAmount);
+        }
+        else if (c+rotationAmount>='a' && c+rotationAmount<='z'){
+            c = c-32;
+            text[i++]=(char)c;
+            cipher[x++]=(char)(c+rotationAmount);
+        }
+        else if (c+rotationAmount>= 122){
+            
+            c=(c-(32+(26)));
+            text[i++]=(char)(c+26);
+            cipher[x++]=(char)(c+rotationAmount);
+        }
+        else if (c<'A'){
+            text[i++]=(char)c;
+            cipher[x++]=(char)c;
+        }
+        
     }    
     printf("%s\n", text);
     printf("%s\n", cipher);
