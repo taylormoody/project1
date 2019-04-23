@@ -43,12 +43,18 @@ char rotationEncryption(){
     int x=0, rotationAmount;
     //runs a loop from text start to the last character,stopping when it hits the end of the string//
     //this is why the loop starts at x=0 and uses ++x instead of x++//
-    for (x=0 ; text[x] != '\0'; ++x){
+    for (x=0 ; text[x]; x++){
         //so that the text can be encrypted without things getting weird, baiscally copying it from one//
         //string to another and then saying the second string is equal to the first//
-        character= (text[x]+rotationAmount);
-        text[x]=character;
-    
+        
+        if (text < 'A' && text > 'Z')
+            if (text >='a' && text <= 'z')
+                character = (text[x]-32 + rotationAmount);
+            else 
+                character=text[x];
+        else
+            character = (text[x] + rotationAmount);
+        printf("%c",character);
       
 
             
