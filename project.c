@@ -35,19 +35,22 @@ int main() {
 void rotationEncryption(){
     char text[1000]={0}, cipher[1000]={0};
     int rotationAmount, c;
-    printf("Please input Rotation Amount\n");
+    printf("Please input Rotation Amount: ");
     scanf("%d", &rotationAmount);
+    getchar();
+    //this getchar is here because it lets the code work and im not good enough to make a better fix
     //runs a loop from text start to the last character,stopping when it hits the end of the string//
     //this is why the loop starts at x=0 and uses ++x instead of x++//
-    printf("Please input Text to be encrypted in Uppercase\n");
+    printf("Please input Text to be encrypted in Uppercase: ");
     while ((c=getchar()) !='\n'){
         static int x=0,i=0;
         
         text[x++]=(char)c;
-        cipher[i++]=(char)(c+rotationAmount);
-        
+        cipher[i++]=(char)(c+3);
+
     }    
-    printf("%s\n", cipher);
     printf("%s\n", text);
+    printf("%s\n", cipher);
+
     
 }
