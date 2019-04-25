@@ -124,25 +124,8 @@ void rotationDecryption(){
     
 }
 void substitutionEncryption(){
-    char text[1000]={0}, substitutionKey[1000]={0}, alphabetNoKey[1000]="abcdefghijklmnopqrstuvwxyz",alphabetKey[1000], c,d;
-    int x=0,y=0,z=0;
-    printf("%s", alphabetNoKey);
-    printf("Please Input keyword with only one of each alphabet letter: ");
+    char text[1000]={0}, substitutionKey[26]={0}, alphabetKey[26]="abcdefghijklmnopqrstuvwxyz",encryptedMessage[1000];
+    printf("Please Input substitution alphabet: ");
     scanf("%s", substitutionKey);
-    //This part will take the keyword, and the alphabet, and take the keyword from the alphabet//
-    //And then and the remainder to the end of the keyword//
-    while (alphabetNoKey[x] !='\n'){
-        c= alphabetNoKey[x];
-        while (substitutionKey[y] !='\n'){
-            d = substitutionKey[y];
-            if (c != d) {
-                alphabetKey[z] = (char)c;
-                z++;
-            
-            }
-            y++;
-        
-        }
-        x++;
-    }
+    
 }
