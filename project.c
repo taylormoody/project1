@@ -1,4 +1,4 @@
-#include <stdio.h>
+##include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 //Assignment 1 eng1003//
@@ -129,20 +129,37 @@ void substitutionEncryption(){
     int x=0,y=0;
     printf("Please Input substitution alphabet in Uppercase: ");
     scanf("%s", substitutionKey);
-    getchar();
     printf("Please input text to be encrypted: ");
     scanf("%s", text);
-    printf("%d\n",strlen(text));
-    for (x=0; x <strlen(text);x++){
+    
+    
+    
+    
+    
+    
+    
+    for (x=0; x <strlen(text);x++){ 
         //found from an article on finding a char in a str//
-        char *positionLetter = strchr(alphabetKey,text[x]);
-        //got no idea what the NULL ? does but i dont want the seg fault to happen thx//
-        int positionNumber= (positionLetter == NULL ? -1 : positionLetter - alphabetKey);
-        printf ("%d",positionNumber);
-        encryptedMessage[y++] = substitutionKey[positionNumber];
-        printf("%s", encryptedMessage[y]);
-
+        if (text[x]>='A' && text[x]<='Z'){
+            char *positionLetter = strchr(alphabetKey,text[x]);
+            //got no idea what the NULL ? does but i dont want the seg fault to happen thx//
+            int positionNumber= (positionLetter == NULL ? -1 : positionLetter - alphabetKey);
+            encryptedMessage[y++] = substitutionKey[positionNumber];
+        }
+        else if (text[x]>='a' && text[x]<='z'){
+            c = text[x];
+            c =c-32;
+            char *positionLetter = strchr(alphabetKey, c);
+            //got no idea what the NULL ? does but i dont want the seg fault to happen thx//
+            int positionNumber= (positionLetter == NULL ? -1 : positionLetter - alphabetKey);
+            encryptedMessage[y++] = substitutionKey[positionNumber]; 
+        }
+        else{
+            encryptedMessage[y++] = text[x];
+        }
     }
+    
+    printf("%s", encryptedMessage);
         
         
     
