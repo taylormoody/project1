@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 //Assignment 1 eng1003//
 
 //The int main will simply be able to call each function I make//
@@ -124,8 +125,26 @@ void rotationDecryption(){
     
 }
 void substitutionEncryption(){
-    char text[1000]={0}, substitutionKey[26]={0}, alphabetKey[26]="abcdefghijklmnopqrstuvwxyz",encryptedMessage[1000];
-    printf("Please Input substitution alphabet: ");
+    char text[1000]={0}, substitutionKey[26]={0}, alphabetKey[26]="ABCDEFGHIJKLMNOPQRSTUVWXYZ",encryptedMessage[1000]={0},c=0;
+    int x=0,y=0;
+    printf("Please Input substitution alphabet in Uppercase: ");
     scanf("%s", substitutionKey);
+    getchar();
+    printf("Please input text to be encrypted: ");
+    scanf("%s", text);
+    printf("%d\n",strlen(text));
+    for (x=0; x <strlen(text);x++){
+        //found from an article on finding a char in a str//
+        char *positionLetter = strchr(alphabetKey,text[x]);
+        //got no idea what the NULL ? does but i dont want the seg fault to happen thx//
+        int positionNumber= (positionLetter == NULL ? -1 : positionLetter - alphabetKey);
+        printf ("%d",positionNumber);
+        encryptedMessage[y++] = substitutionKey[positionNumber];
+        printf("%s", encryptedMessage[y]);
+
+    }
+        
+        
+    
     
 }
